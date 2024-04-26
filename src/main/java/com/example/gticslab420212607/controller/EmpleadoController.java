@@ -1,6 +1,8 @@
 package com.example.gticslab420212607.controller;
 
+import com.example.gticslab420212607.entity.Departments;
 import com.example.gticslab420212607.entity.Employees;
+import com.example.gticslab420212607.entity.Jobs;
 import com.example.gticslab420212607.entity.Regions;
 import com.example.gticslab420212607.repository.*;
 import org.springframework.stereotype.Controller;
@@ -71,7 +73,13 @@ public class EmpleadoController {
                          @RequestParam("idEmployee") Integer id){
         Optional<Employees> prov = employeesRepository.findById(id);
         if(prov.isPresent()){
-            Employees employees = prov.get();
+            Employees employee = prov.get();
+            List<Departments> listaDep = departmentsRepository.findAll();
+            List<Jobs> listaJobs = jobsRepository.findAll();
+
+            model.addAttribute("employee",employee);
+            model.addAttribute("listaJobs",listaJobs);
+            model.addAttribute("listaDep",listaDep);
 
             return "Empleados/edit";
         }
@@ -85,7 +93,11 @@ public class EmpleadoController {
 
 
     @PostMapping(value = "sede/guardar")
-    public String guardarEmpleado(Employees employees){
+    public String guardarEmpleado(Employees employees, @RequestParam("idDep") Integer idDep, @RequestParam("idJob") String idJob){
+
+        employees.setJobs(jobsRepository.findById(idJob).get());
+        employees.setDepartments(departmentsRepository.findById(idDep).get());
+
         employeesRepository.save(employees);
         return "redirect:/empleados";
     }
