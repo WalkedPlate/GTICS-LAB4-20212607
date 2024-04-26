@@ -19,10 +19,10 @@ public class Departments {
 
 
     @ManyToOne
-    @JoinColumn(name = "employees")
+    @JoinColumn(name = "manager_id")
     private Employees manager;
 
     @ManyToOne
-    @JoinColumn(name = "locations")
+    @JoinColumn(name = "location_id")
     private Locations locations;
 }

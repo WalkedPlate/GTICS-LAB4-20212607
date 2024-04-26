@@ -13,24 +13,21 @@ public class JobHistory {
     @Column(name="job_history_id",nullable = false)
     private Integer departmentId;
 
-    @Id
+
     @Column(name="start_date",nullable = false)
     private String startDate;
 
 
-    @Column(name="start_date",nullable = true)
-    private String departmentName;
-
 
     @ManyToOne
-    @JoinColumn(name = "dapartments")
+    @JoinColumn(name = "department_id")
     private Departments departments;
 
     @ManyToOne
-    @JoinColumn(name = "jobs")
+    @JoinColumn(name = "job_id")
     private Jobs jobs;
 
     @ManyToOne
-    @JoinColumn(name = "employees")
+    @JoinColumn(name = "employees_id")
     private Employees employee;
 }

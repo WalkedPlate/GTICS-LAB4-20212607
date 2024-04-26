@@ -44,15 +44,15 @@ public class Employees {
     private Integer enabled;
 
     @ManyToOne
-    @JoinColumn(name = "jobs")
+    @JoinColumn(name = "job_id")
     private Jobs jobs;
 
     @ManyToOne
-    @JoinColumn(name = "employees")
+    @JoinColumn(name = "manager_id")
     private Employees manager;
 
     @ManyToOne
-    @JoinColumn(name = "departments")
+    @JoinColumn(name = "department_id", nullable = true)
     private Departments departments;
 
 }

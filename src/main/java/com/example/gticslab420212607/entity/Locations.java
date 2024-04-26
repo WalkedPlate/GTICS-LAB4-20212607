@@ -28,7 +28,7 @@ public class Locations {
 
 
     @ManyToOne
-    @JoinColumn(name = "countries")
+    @JoinColumn(name = "country_id")
     private Countries countries;
 
 }

@@ -19,7 +19,7 @@ public class Countries {
     private String jobTitle;
 
     @ManyToOne
-    @JoinColumn(name = "regions")
+    @JoinColumn(name = "region_id")
     private Regions regions;
 
 
